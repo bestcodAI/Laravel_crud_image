@@ -43,7 +43,7 @@
             <div class="form-group">
                 <strong>Image:</strong>
                 <input type="file" name="image" class="form-control" >
-                <img src="/ Aimages/{{ $product->image }}" width="150px">
+                <img src="/images/{{ $product->image }}" width="150px">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

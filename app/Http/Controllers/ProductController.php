@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    
+
     public function index()
     {
         $products = Product::latest()->paginate(5);
@@ -15,20 +15,20 @@ class ProductController extends Controller
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-   
-    public function create()
+
+    public function create(Product $product)
     {
-        return view('products.create');
+        return view('products.create', compact('product'));
     }
 
-   
+
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
             'image' => 'required|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
-        ]); 
+        ]);
 
         $input = $request->all();
 
@@ -44,19 +44,19 @@ class ProductController extends Controller
                          ->with('success','Product created successfully');
     }
 
-   
+
     public function show(Product $product)
     {
          return view('products.show', compact('product'));
     }
 
-    
+
     public function edit(Product $product)
     {
         return view('products.edit', compact('product'));
     }
 
-    
+
     public function update(Request $request, Product $product)
     {
         $request->validate([
@@ -71,7 +71,7 @@ class ProductController extends Controller
             $profileImage = date('YmdHis').".".$image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";
-        
+
         }else{
             unset($input['images']);
         }
@@ -81,7 +81,7 @@ class ProductController extends Controller
                         ->with('success', 'Product updated successfully');
     }
 
-   
+
     public function destroy(Product $product)
     {
         $product->delete();

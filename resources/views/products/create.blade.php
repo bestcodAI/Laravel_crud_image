@@ -23,14 +23,14 @@
         </div>
     @endif
 </br>
-<form action="{{route('products.store') }} " method="post" enctype="multipart/form-data">
+<form action="{{  route('products.store')  }} " method="post" enctype="multipart/form-data">
     @csrf
-   
+
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name" >
+                <input type="text" name="name" class="form-control" placeholder="Name"  >
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
